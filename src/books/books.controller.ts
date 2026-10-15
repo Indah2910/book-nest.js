@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { BooksService } from './books.service.js';
 import { CreateBookDto } from './dto/create-book.dto.js';
 import { GetBookDto } from './dto/get-book.dto.js';
+import { DeleteBookDto } from './dto/delete-book.dto.js';
 
 @Controller('books')
 export class BooksController {
@@ -20,20 +21,20 @@ export class BooksController {
     }
 
     //Menampilkan data buku berdasarkan id (belum bener)
-    @Get()
-    getBookById(@Body() getBookDto: GetBookDto){
+    @Get(':id')
+    getBookById(@Param() getBookDto: GetBookDto){
         return this.booksService.get(getBookDto);
     }
 
     //Update data buku 
     @Put(':id')
-    updateBook(@Param('id') id: string): string{
-        return `Data buku dengan id: $(id) berhasil diperbarui`
+    updateBook(@Param() updateBookDto: GetBookDto){
+        return this.booksService.update(updateBookDto);
     }
 
     //Menghapus data buku
     @Delete(':id')
-    deleteBook(@Param('id') id: string): string{
-        return `Data buku dengan id: $(id) berhasil dihapus`
+    deleteBook(@Param() deleteBookDto: DeleteBookDto){
+        return this.booksService.delete(deleteBookDto);
     }
 }

@@ -3,9 +3,18 @@ import { title } from 'process';
 import { Book } from './entities/book-entity.js';
 import { CreateBookDto } from './dto/create-book.dto.js';
 import { GetBookDto } from './dto/get-book.dto.js';
+import { DeleteBookDto } from './dto/delete-book.dto.js';
 
 @Injectable() 
 export class BooksService {
+    delete(deleteBookDto: DeleteBookDto) {
+        throw new Error('Method not implemented.');
+    }
+    //simpan ke database
+    update //simpan ke database
+        (updateBookDto: GetBookDto) {
+            throw new Error('Method not implemented.');
+    }
     private books: Book [] =[
 
         {
